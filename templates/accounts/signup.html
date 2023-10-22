@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Sing Up</h1>
+    <form action="/accounts/signup/" method="post">
+        {% csrf_token %}
+        <label for="username">사용자 이름: </label>
+        <input id="username" type="text" name="username"> 150자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.<br>
+        <label for="password1">비밀번호: </label>
+        <input id="password1" type="password" name="password1">
+
+        <ul>
+            <li>다른 개인 정보와 유사한 비밀번호는 사용할 수 없습니다.</li>
+            <li>비밀번호는 최소 8자 이상이어야 합니다.</li>
+            <li>통상적으로 자주 사용되는 비밀번호는 사용할 수 없습니다.</li>
+            <li>숫자로만 이루어진 비밀번호는 사용할 수 없습니다.</li>
+        </ul>
+
+        <label for="password2">비밀번호 확인: </label>
+        <input id="password2" type="password" name="password2"> <br>
+        <label for="email">Email: </label>
+        <input id="email" type="text" name="email">
+
+        <input type="submit" value="Sign up">
+    </form>
+
+{% endblock %}

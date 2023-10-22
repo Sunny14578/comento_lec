@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
 <html lang="en">
     <head>
@@ -14,21 +15,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
     </head>
     <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    {% block content %}
         <!-- Page Content-->
         {% if content_list %}
             {% for content in content_list %}
@@ -40,8 +27,8 @@
                         <h1 class="font-weight-light">
                             <h3><a href="/mysite/{{ content.id }}/">{{ content.title }}</a></h3>
                         </h1>
-                        <p> <h5>{{ content.content}}</h5></p>
-                        <a class="btn btn-primary" href="#!">상품 상세보기</a>
+                        <p> <h5>{{ content.content | truncatewords:30}}</h5></p>
+                        <a class="btn btn-primary" href="{% url 'detail' content.id %}">상품 상세보기</a>
                     </div>
                 </div>
              </div>
@@ -53,12 +40,6 @@
         {% endif %}
 
 
-
-
-            <!-- Call to Action-->
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+    {% endblock %}
     </body>
 </html>

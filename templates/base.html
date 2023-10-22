@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+
+<body>
+    {% include "navbar.html" %}
+    {% block content %}
+    {% endblock %}
+    {% include "footer.html" %}
+</body>
